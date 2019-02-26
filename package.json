@@ -1,6 +1,6 @@
 {
   "name": "brain-games-v",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "My first project in Hexlet",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
@@ -23,6 +23,9 @@
     "lessons",
     "brain-games"
   ],
+  "dependencies": {    
+    "readline-sync": "^1.4.9"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
