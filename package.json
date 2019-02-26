@@ -1,8 +1,7 @@
 {
   "name": "brain-games-v",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "My first project in Hexlet",
-  "main": "dist/bin/brain-games.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
@@ -19,6 +18,11 @@
   },
   "author": "Vladislav Mironov",
   "license": "ISC",
+  "keywords": [
+    "hexlet",
+    "lessons",
+    "brain-games"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
