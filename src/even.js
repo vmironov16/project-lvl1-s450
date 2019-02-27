@@ -10,48 +10,53 @@ const greeting = () => {
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
+const getRightAnswer = num => (isEven(num) ? 'yes' : 'no');
 
-const generateQuestionForm = (num) => {
-  const q = `Question:${num}\nYour answer:`;
-  const answer = readlineSync.question(q);
-  return answer;
-};
+const isEven = num => ((num % 2 === 0));
 
-
-const getRightAnswer = (num) => {
-  if (num % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
-};
-
-const questionMsg = (answer, rightAnswer, userName) => {
+const getResult = (answer, rightAnswer) => {
   if (answer === rightAnswer) {
-    console.log('Correct!');
     return true;
   }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`);
   return false;
 };
 
+const showResultMsgForUser = (result, answer, rightAnswer, name) => {
+  if (result === true) {
+    console.log('Correct!');
+  } else {
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${name}!`);
+  }
+};
+
+const showQuestion = (num) => {
+  console.log(`Question:${num}`);
+};
+
+const getAnswer = () => {
+  const answer = readlineSync.question('Your answer:');
+  return answer.toLowerCase();
+};
 
 const app = () => {
   const userName = greeting();
+  const countRightAnswersForEnd = 3;
 
-  const iter = (name, acc) => {
-    if (acc === 3) {
+  const iter = (name, counter) => {
+    if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${name}!`);
-      return false;
+    } else {
+      const num = getRandomInt(0, 101);
+      showQuestion(num);
+      const answer = getAnswer();
+      const rightAnswer = getRightAnswer(num);
+      const result = getResult(answer, rightAnswer);
+      showResultMsgForUser(result, answer, rightAnswer, name);
+      iter(name, (result === true) ? counter + 1 : counter);
     }
-
-    const num = getRandomInt(0, 101);
-    const answer = generateQuestionForm(num);
-    const rightAnswer = getRightAnswer(num);
-    const result = questionMsg(answer, rightAnswer, name);
-    return iter(name, (result === true) ? acc + 1 : acc);
   };
 
-  return iter(userName, 0);
+  iter(userName, 0);
 };
 
 export default app;
