@@ -7,7 +7,6 @@ plugins:
 # https://eslint.org/docs/user-guide/configuring#specifying-environments
 env:
   node: true
-  jest: true
 
 # https://github.com/babel/babel-eslint
 parser: babel-eslint
@@ -17,4 +16,3 @@ extends:
 
 rules:
   no-console: 0
-  no-unused-vars: ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
