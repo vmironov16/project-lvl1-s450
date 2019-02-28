@@ -20,4 +20,4 @@ brain-calc game example
 [![asciicast](https://asciinema.org/a/4IPC4WdlJk6TKchTVphIHI3WG.svg)](https://asciinema.org/a/4IPC4WdlJk6TKchTVphIHI3WG)
 
 brain-gcd game example
-[![asciicast](https://asciinema.org/a/gMZmhiok8dYa2WqIadPLMYhOm.svg)](https://asciinema.org/a/gMZmhiok8dYa2WqIadPLMYhOm)
+[![asciicast](https://asciinema.org/a/Q3W4nwPAQEccpcHXVHnumk4ix.svg)](https://asciinema.org/a/Q3W4nwPAQEccpcHXVHnumk4ix)
