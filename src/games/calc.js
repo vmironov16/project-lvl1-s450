@@ -1,5 +1,8 @@
 
-import { core, getRandomInt } from '../core';
+import core from '../core';
+import getRandomInt from '../utils';
+
+const getRules = () => 'What is the result of the expression?';
 
 const minRandomInt = 0;
 
@@ -21,26 +24,30 @@ const mathOperators = [
 ];
 
 
-const getRandomMathOperation = () => mathOperators[
-  Math.floor(Math.random() * mathOperators.length)
-];
+const getRandomMathOperation = () => {
+  const minIndexMathOperator = 0;
+  const maxIndexMathOperator = mathOperators.length;
+  return mathOperators[
+    getRandomInt(minIndexMathOperator, maxIndexMathOperator)
+  ];
+};
 
 const getData = () => {
   const mathOperationData = getRandomMathOperation();
+  const a = getRandomInt(minRandomInt, maxRandomInt);
+  const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
-    a: getRandomInt(minRandomInt, maxRandomInt),
-    b: getRandomInt(minRandomInt, maxRandomInt),
+    rules: getRules(),
+    a,
+    b,
     sign: mathOperationData.sign,
-    method: mathOperationData.method,
+    question: `${a} ${mathOperationData.sign} ${b}`,
+    answer: mathOperationData.method(a, b),
   };
 };
 
-const getQuestion = data => `${data.a} ${data.sign} ${data.b}`;
-
-const getRightAnswer = data => data.method(data.a, data.b);
-
 const app = () => {
-  core(getData, getQuestion, getRightAnswer);
+  core(getData);
 };
 
 export default app;

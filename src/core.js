@@ -1,8 +1,14 @@
 import readlineSync from 'readline-sync';
 
-const greeting = () => {
-  console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
-  // Wait for user's response.
+const showGreeting = () => {
+  console.log('Welcome to the Brain Games!');
+};
+
+const showRules = (rulesText) => {
+  console.log(rulesText);
+};
+
+const getUserName = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello , ${userName}!`);
   return userName;
@@ -27,28 +33,31 @@ const getAnswer = () => {
   return answer.toLowerCase();
 };
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-const core = (getDataFunc, getQuestionFunc, getRightAnswerFunc) => {
-  const userName = greeting();
+const core = (dataGameFunc) => {
   const countRightAnswersForEnd = 3;
+  showGreeting();
+  showRules(dataGameFunc().rules);
+  const userName = getUserName();
 
-  const iter = (name, getData, getQuestion, getRightAnswer, counter) => {
+  const iter = (name, getDataGame, counter) => {
     if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${name}!`);
     } else {
-      const data = getData();
-      const question = getQuestion(data);
-      showQuestion(question);
+      const gameData = getDataGame();
+      const questionText = gameData.question;
+
+      const rightAnswer = gameData.answer;
+      showQuestion(questionText);
       const answer = getAnswer();
-      const rightAnswer = getRightAnswer(data);
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, name);
-      iter(name, getData, getQuestion, getRightAnswer, (result === true) ? counter + 1 : counter);
+      if (result) {
+        iter(name, getDataGame, (result) ? counter + 1 : null);
+      }
     }
   };
 
-  iter(userName, getDataFunc, getQuestionFunc, getRightAnswerFunc, 0);
+  iter(userName, dataGameFunc, 0);
 };
 
-export { core, getRandomInt };
+export default core;

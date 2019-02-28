@@ -50,7 +50,7 @@ const app = () => {
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, name);
       if (result) {
-        iter(name, (result) ? counter + 1 : false);
+        iter(name, (result) ? counter + 1 : null);
       }
     }
   };
