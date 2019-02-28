@@ -10,8 +10,14 @@ $ make install
 [![Build Status](https://travis-ci.org/vmironov16/project-lvl1-s450.svg?branch=master)](https://travis-ci.org/vmironov16/project-lvl1-s450)
 
 
-brain-calc game install and game example
-[![asciicast](https://asciinema.org/a/7ydr6eLsjjqO80LZslfcwgERP.svg)](https://asciinema.org/a/7ydr6eLsjjqO80LZslfcwgERP)
+brain-games Install
+[![asciicast](https://asciinema.org/a/fCztEWS4PfdXO5M15HT9UjDUE.svg)](https://asciinema.org/a/fCztEWS4PfdXO5M15HT9UjDUE)
 
-brain-even game install and game example
-[![asciicast](https://asciinema.org/a/LiKbyA6p2aTPYvOnm5oSL1w08.svg)](https://asciinema.org/a/LiKbyA6p2aTPYvOnm5oSL1w08)
+brain-even game example
+[![asciicast](https://asciinema.org/a/4bCrWY2MoCEWZ8wGBPOlOcfX2.svg)](https://asciinema.org/a/4bCrWY2MoCEWZ8wGBPOlOcfX2)
+
+brain-calc game example
+[![asciicast](https://asciinema.org/a/4IPC4WdlJk6TKchTVphIHI3WG.svg)](https://asciinema.org/a/4IPC4WdlJk6TKchTVphIHI3WG)
+
+brain-gcd game example
+[![asciicast](https://asciinema.org/a/gMZmhiok8dYa2WqIadPLMYhOm.svg)](https://asciinema.org/a/gMZmhiok8dYa2WqIadPLMYhOm)

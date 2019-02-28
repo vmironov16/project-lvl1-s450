@@ -4,7 +4,7 @@ const showGreeting = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const showRules = (rulesText) => {
+const showGameRules = (rulesText) => {
   console.log(rulesText);
 };
 
@@ -24,7 +24,7 @@ const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   }
 };
 
-const showQuestion = (num) => {
+const showGameQuestion = (num) => {
   console.log(`Question:${num}`);
 };
 
@@ -35,8 +35,9 @@ const getAnswer = () => {
 
 const core = (dataGameFunc) => {
   const countRightAnswersForEnd = 3;
+  const gameRules = (dataGameFunc().rules !== undefined) ? dataGameFunc().rules : '';
   showGreeting();
-  showRules(dataGameFunc().rules);
+  showGameRules(gameRules);
   const userName = getUserName();
 
   const iter = (name, getDataGame, counter) => {
@@ -47,7 +48,7 @@ const core = (dataGameFunc) => {
       const questionText = gameData.question;
 
       const rightAnswer = gameData.answer;
-      showQuestion(questionText);
+      showGameQuestion(questionText);
       const answer = getAnswer();
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, name);

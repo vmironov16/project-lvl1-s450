@@ -32,7 +32,7 @@ const getRandomMathOperation = () => {
   ];
 };
 
-const getData = () => {
+const getGameData = () => {
   const mathOperationData = getRandomMathOperation();
   const a = getRandomInt(minRandomInt, maxRandomInt);
   const b = getRandomInt(minRandomInt, maxRandomInt);
@@ -47,7 +47,7 @@ const getData = () => {
 };
 
 const app = () => {
-  core(getData);
+  core(getGameData);
 };
 
 export default app;
