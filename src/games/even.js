@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 const greeting = () => {
   console.log('Welcome to the Brain Games!');
-  console.log(`Answer "yes" if number even otherwise answer "no".`);
+  console.log('Answer "yes" if number even otherwise answer "no".');
   // Wait for user's response.
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello !!!, ${userName}!`);
@@ -40,9 +40,6 @@ const app = () => {
   const countRightAnswersForEnd = 3;
 
   const iter = (name, counter) => {
-    if (counter === false){
-      return false;
-    }
     if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${name}!`);
     } else {
@@ -52,7 +49,9 @@ const app = () => {
       const rightAnswer = getRightAnswer(question);
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, name);
-      iter(name, (result) ? counter + 1 : false);
+      if (result) {
+        iter(name, (result) ? counter + 1 : false);
+      }
     }
   };
 
