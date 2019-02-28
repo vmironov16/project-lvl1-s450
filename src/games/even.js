@@ -1,7 +1,8 @@
 import readlineSync from 'readline-sync';
 
 const greeting = () => {
-  console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
+  console.log('Welcome to the Brain Games!');
+  console.log(`Answer "yes" if number even otherwise answer "no".`);
   // Wait for user's response.
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello !!!, ${userName}!`);
@@ -20,7 +21,8 @@ const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   if (result === true) {
     console.log('Correct!');
   } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${name}!`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+    console.log(`Let's try again, ${name}!`);
   }
 };
 
@@ -38,16 +40,19 @@ const app = () => {
   const countRightAnswersForEnd = 3;
 
   const iter = (name, counter) => {
+    if (counter === false){
+      return false;
+    }
     if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${name}!`);
     } else {
-      const num = getRandomInt(0, 101);
-      showQuestion(num);
+      const question = getRandomInt(0, 101);
+      showQuestion(question);
       const answer = getAnswer();
-      const rightAnswer = getRightAnswer(num);
+      const rightAnswer = getRightAnswer(question);
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, name);
-      iter(name, (result === true) ? counter + 1 : counter);
+      iter(name, (result) ? counter + 1 : false);
     }
   };
 
