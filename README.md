@@ -21,3 +21,6 @@ brain-calc game example
 
 brain-gcd game example
 [![asciicast](https://asciinema.org/a/Q3W4nwPAQEccpcHXVHnumk4ix.svg)](https://asciinema.org/a/Q3W4nwPAQEccpcHXVHnumk4ix)
+
+brain-progression example
+[![asciicast](https://asciinema.org/a/jtogC5vuXg3UUsymONSB4h2Xg.svg)](https://asciinema.org/a/jtogC5vuXg3UUsymONSB4h2Xg)
