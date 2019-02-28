@@ -1,8 +1,7 @@
-
 import core from '../core';
 import getRandomInt from '../utils';
 
-const getRules = () => 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
 const minRandomInt = 1;
 
@@ -14,9 +13,7 @@ const getGameData = () => {
   const a = getRandomInt(minRandomInt, maxRandomInt);
   const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
-    rules: getRules(),
-    a,
-    b,
+    description,
     question: `${a} ${b}`,
     answer: findGCD(a, b),
   };

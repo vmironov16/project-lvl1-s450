@@ -1,8 +1,7 @@
-
 import core from '../core';
 import getRandomInt from '../utils';
 
-const getRules = () => 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
 const minRandomInt = 0;
 
@@ -37,10 +36,7 @@ const getGameData = () => {
   const a = getRandomInt(minRandomInt, maxRandomInt);
   const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
-    rules: getRules(),
-    a,
-    b,
-    sign: mathOperationData.sign,
+    description,
     question: `${a} ${mathOperationData.sign} ${b}`,
     answer: mathOperationData.method(a, b),
   };

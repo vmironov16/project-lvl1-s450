@@ -4,8 +4,8 @@ const showGreeting = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const showGameRules = (rulesText) => {
-  console.log(rulesText);
+const showGameDescription = (descrText) => {
+  console.log(descrText);
 };
 
 const getUserName = () => {
@@ -14,13 +14,14 @@ const getUserName = () => {
   return userName;
 };
 
-const getResult = (answer, rightAnswer) => ((parseInt(answer, 10) === parseInt(rightAnswer, 10)));
+const getResult = (answer, rightAnswer) => (String(answer) === String(rightAnswer));
 
 const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   if (result === true) {
     console.log('Correct!');
   } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${name}!`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+    console.log(`Let's try again, ${name}!`);
   }
 };
 
@@ -35,30 +36,28 @@ const getAnswer = () => {
 
 const core = (dataGameFunc) => {
   const countRightAnswersForEnd = 3;
-  const gameRules = (dataGameFunc().rules !== undefined) ? dataGameFunc().rules : '';
   showGreeting();
-  showGameRules(gameRules);
+  showGameDescription(dataGameFunc().description);
   const userName = getUserName();
 
-  const iter = (name, getDataGame, counter) => {
+  const iter = (getDataGame, counter) => {
     if (counter === countRightAnswersForEnd) {
-      console.log(`Congratulations, ${name}!`);
+      console.log(`Congratulations, ${userName}!`);
     } else {
       const gameData = getDataGame();
       const questionText = gameData.question;
-
       const rightAnswer = gameData.answer;
       showGameQuestion(questionText);
       const answer = getAnswer();
       const result = getResult(answer, rightAnswer);
-      showResultMsgForUser(result, answer, rightAnswer, name);
+      showResultMsgForUser(result, answer, rightAnswer, userName);
       if (result) {
-        iter(name, getDataGame, (result) ? counter + 1 : null);
+        iter(getDataGame, (result) ? counter + 1 : null);
       }
     }
   };
 
-  iter(userName, dataGameFunc, 0);
+  iter(dataGameFunc, 0);
 };
 
 export default core;
