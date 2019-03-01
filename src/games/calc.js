@@ -2,11 +2,8 @@ import core from '../core';
 import getRandomInt from '../utils';
 
 const description = 'What is the result of the expression?';
-
 const minRandomInt = 0;
-
 const maxRandomInt = 11;
-
 const mathOperators = [
   {
     sign: '+',
@@ -21,7 +18,6 @@ const mathOperators = [
     method(a, b) { return a * b; },
   },
 ];
-
 
 const getRandomMathOperation = () => {
   const minIndexMathOperator = 0;
@@ -42,8 +38,4 @@ const getGameData = () => {
   };
 };
 
-const app = () => {
-  core(getGameData);
-};
-
-export default app;
+export default () => core(getGameData);

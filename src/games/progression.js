@@ -46,8 +46,4 @@ const getGameData = () => {
   };
 };
 
-const app = () => {
-  core(getGameData);
-};
-
-export default app;
+export default () => core(getGameData);
