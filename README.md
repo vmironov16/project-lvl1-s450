@@ -24,3 +24,6 @@ brain-gcd game example
 
 brain-progression example
 [![asciicast](https://asciinema.org/a/jtogC5vuXg3UUsymONSB4h2Xg.svg)](https://asciinema.org/a/jtogC5vuXg3UUsymONSB4h2Xg)
+
+brain-prime game example
+[![asciicast](https://asciinema.org/a/1iF9Ry9x1RICetafudqWYrCR1.svg)](https://asciinema.org/a/1iF9Ry9x1RICetafudqWYrCR1)
