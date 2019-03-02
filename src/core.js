@@ -1,21 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const showGreeting = () => {
-  console.log('Welcome to the Brain Games!');
-};
-
-const showGameDescription = (descrText) => {
-  console.log(descrText);
-};
-
-const getUserName = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello , ${userName}!`);
-  return userName;
-};
-
-const getResult = (answer, rightAnswer) => (String(answer) === String(rightAnswer));
-
 const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   if (result === true) {
     console.log('Correct!');
@@ -25,20 +9,12 @@ const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   }
 };
 
-const showGameQuestion = (num) => {
-  console.log(`Question:${num}`);
-};
-
-const getAnswer = () => {
-  const answer = readlineSync.question('Your answer:');
-  return answer.toLowerCase();
-};
-
 const core = (description, dataGameFunc) => {
   const countRightAnswersForEnd = 3;
-  showGreeting();
-  showGameDescription(description);
-  const userName = getUserName();
+  console.log('Welcome to the Brain Games!');
+  console.log(description);
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello , ${userName}!`);
 
   const iter = (getDataGame, counter) => {
     if (counter === null) {
@@ -50,9 +26,9 @@ const core = (description, dataGameFunc) => {
       const gameData = getDataGame();
       const questionText = gameData.question;
       const rightAnswer = gameData.answer;
-      showGameQuestion(questionText);
-      const answer = getAnswer();
-      const result = getResult(answer, rightAnswer);
+      console.log(`Question:${questionText}`);
+      const answer = readlineSync.question('Your answer:').toLowerCase();
+      const result = (String(answer) === String(rightAnswer));
       showResultMsgForUser(result, answer, rightAnswer, userName);
       iter(getDataGame, (result) ? counter + 1 : null);
     }
