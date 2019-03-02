@@ -34,13 +34,16 @@ const getAnswer = () => {
   return answer.toLowerCase();
 };
 
-const core = (dataGameFunc) => {
+const core = (description, dataGameFunc) => {
   const countRightAnswersForEnd = 3;
   showGreeting();
-  showGameDescription(dataGameFunc().description);
+  showGameDescription(description);
   const userName = getUserName();
 
   const iter = (getDataGame, counter) => {
+    if (counter === null) {
+      return;
+    }
     if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${userName}!`);
     } else {
@@ -51,9 +54,7 @@ const core = (dataGameFunc) => {
       const answer = getAnswer();
       const result = getResult(answer, rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, userName);
-      if (result) {
-        iter(getDataGame, (result) ? counter + 1 : null);
-      }
+      iter(getDataGame, (result) ? counter + 1 : null);
     }
   };
 

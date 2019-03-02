@@ -3,47 +3,40 @@ import getRandomInt from '../utils';
 
 const description = 'What number is missing in the progression?';
 
-const lengthProgression = 10;
+const length = 10;
 
-const minRandomStepProgression = 1;
-const maxRandomStepProgression = 10;
+const minRandomStep = 1;
+const maxRandomStep = 10;
 
-const minRandomFirstElProgression = 1;
-const maxRandomFirstElProgression = 100;
+const minRandomFirstEl = 1;
+const maxRandomFirstEl = 100;
 
-const firstIndexElProgression = 0;
-const lastIndexElProgression = lengthProgression;
+const firstIndexEl = 0;
+const lastIndexEl = length - 1;
 
-const arrToString = arr => arr.join(',');
-
-const getElArrByIndex = (arr, indexEl) => arr[indexEl];
-
-const getArrProgression = (firstEl, step, length) => {
-  const arr = [firstEl];
-  for (let i = 0; i < length - 1; i += 1) {
-    arr.push(arr[i] + step);
+const getArrProgression = (firstEl, step, progressionlength) => {
+  const arr = [];
+  for (let i = 0; i < progressionlength - 1; i += 1) {
+    arr.push(firstEl + step * i);
   }
   return arr;
 };
 
-const getArrProgressionForQuestion = (progression, hideIndexEl) => progression.map((el, i) => ((i === hideIndexEl) ? '...' : el));
+const getArrProgressionForQuestion = (arrProgression, hideIndexEl) => arrProgression.map((el, i) => ((i === hideIndexEl) ? '...' : el));
 
 const getGameData = () => {
-  const firstElProgression = getRandomInt(minRandomFirstElProgression, maxRandomFirstElProgression);
-  const stepProgression = getRandomInt(minRandomStepProgression, maxRandomStepProgression);
-  const indexElProgressionHide = getRandomInt(firstIndexElProgression, lastIndexElProgression);
+  const firstEl = getRandomInt(minRandomFirstEl, maxRandomFirstEl);
+  const step = getRandomInt(minRandomStep, maxRandomStep);
+  const hiddenElementIndex = getRandomInt(firstIndexEl, lastIndexEl);
 
-  const progression = getArrProgression(firstElProgression, stepProgression, lengthProgression);
-  const progressionQuestion = getArrProgressionForQuestion(progression, indexElProgressionHide);
-
-  const answer = getElArrByIndex(progression, indexElProgressionHide);
-  const question = arrToString(progressionQuestion);
+  const progression = getArrProgression(firstEl, step, length);
+  const answer = progression[hiddenElementIndex];
+  const question = getArrProgressionForQuestion(progression, hiddenElementIndex).join(',');
 
   return {
-    description,
     question,
     answer,
   };
 };
 
-export default () => core(getGameData);
+export default () => core(description, getGameData);

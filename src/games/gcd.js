@@ -13,10 +13,9 @@ const getGameData = () => {
   const a = getRandomInt(minRandomInt, maxRandomInt);
   const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
-    description,
     question: `${a} ${b}`,
     answer: findGCD(a, b),
   };
 };
 
-export default () => core(getGameData);
+export default () => core(description, getGameData);
