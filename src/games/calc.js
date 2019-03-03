@@ -33,7 +33,7 @@ const getGameData = () => {
   const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
     question: `${a} ${mathOperationData.sign} ${b}`,
-    answer: mathOperationData.method(a, b),
+    answer: String(mathOperationData.method(a, b)),
   };
 };
 

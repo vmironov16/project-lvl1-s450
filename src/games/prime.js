@@ -3,10 +3,11 @@ import getRandomInt from '../utils';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const minRandomInt = 1;
+const minRandomInt = -100;
 const maxRandomInt = 100;
 
 const isPrime = (num) => {
+  if (num < 2) return false;
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) return false;
   }

@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 const showResultMsgForUser = (result, answer, rightAnswer, name) => {
-  if (result === true) {
+  if (result) {
     console.log('Correct!');
   } else {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
@@ -17,20 +17,17 @@ const core = (description, dataGameFunc) => {
   console.log(`Hello , ${userName}!`);
 
   const iter = (getDataGame, counter) => {
-    if (counter === null) {
-      return;
-    }
     if (counter === countRightAnswersForEnd) {
       console.log(`Congratulations, ${userName}!`);
     } else {
-      const gameData = getDataGame();
-      const questionText = gameData.question;
-      const rightAnswer = gameData.answer;
-      console.log(`Question:${questionText}`);
+      const { question, answer: rightAnswer } = getDataGame();
+      console.log(`Question:${question}`);
       const answer = readlineSync.question('Your answer:').toLowerCase();
-      const result = (String(answer) === String(rightAnswer));
+      const result = (answer === rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, userName);
-      iter(getDataGame, (result) ? counter + 1 : null);
+      if (result) {
+        iter(getDataGame, counter + 1);
+      }
     }
   };
 

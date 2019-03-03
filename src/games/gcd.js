@@ -14,7 +14,7 @@ const getGameData = () => {
   const b = getRandomInt(minRandomInt, maxRandomInt);
   return {
     question: `${a} ${b}`,
-    answer: findGCD(a, b),
+    answer: String(findGCD(a, b)),
   };
 };
 

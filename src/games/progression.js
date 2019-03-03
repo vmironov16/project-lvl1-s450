@@ -30,7 +30,7 @@ const getGameData = () => {
   const hiddenElementIndex = getRandomInt(firstIndexEl, lastIndexEl);
 
   const progression = getArrProgression(firstEl, step, length);
-  const answer = progression[hiddenElementIndex];
+  const answer = String(progression[hiddenElementIndex]);
   const question = getArrProgressionForQuestion(progression, hiddenElementIndex).join(',');
 
   return {
