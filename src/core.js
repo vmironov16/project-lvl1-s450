@@ -1,5 +1,7 @@
 import readlineSync from 'readline-sync';
 
+const countRightAnswersForEnd = 3;
+
 const showResultMsgForUser = (result, answer, rightAnswer, name) => {
   if (result) {
     console.log('Correct!');
@@ -10,7 +12,6 @@ const showResultMsgForUser = (result, answer, rightAnswer, name) => {
 };
 
 const core = (description, dataGameFunc) => {
-  const countRightAnswersForEnd = 3;
   console.log('Welcome to the Brain Games!');
   console.log(description);
   const userName = readlineSync.question('May I have your name? ');
@@ -25,9 +26,8 @@ const core = (description, dataGameFunc) => {
       const answer = readlineSync.question('Your answer:').toLowerCase();
       const result = (answer === rightAnswer);
       showResultMsgForUser(result, answer, rightAnswer, userName);
-      if (result) {
-        iter(getDataGame, counter + 1);
-      }
+      if (!result) { return; }
+      iter(getDataGame, counter + 1);
     }
   };
 
